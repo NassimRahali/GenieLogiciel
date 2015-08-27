@@ -14,7 +14,7 @@
     <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
         <classpath path="./lib/jacocoant.jar" />
     </taskdef>
-    
+    <!--
     <target name="test" depends="init">
         <jacoco:coverage destfile="target/jacoco.exec">
             <junit printsummary="yes" haltonfailure="yes" fork="yes" forkmode="once">
@@ -31,4 +31,5 @@
             </junit>
         </jacoco:coverage>
     </target>
+    -->
 </project>
