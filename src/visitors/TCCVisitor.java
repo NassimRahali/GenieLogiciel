@@ -31,7 +31,6 @@ public class TCCVisitor extends Java8BaseVisitor<Void> {
     private String currentMethodName;
     private boolean isPublicMethod = false;
 
-
     public TCCVisitor() {
         this.classFields = new HashSet<>();
         this.methodAccess = new HashMap<>();
@@ -78,7 +77,7 @@ public class TCCVisitor extends Java8BaseVisitor<Void> {
         super.visitExpressionName(ctx);
         if (this.isPublicMethod && this.currentMethodName != null) {
             Set<String> methodAccess
-              = this.methodAccess.get(this.currentMethodName);
+                    = this.methodAccess.get(this.currentMethodName);
             methodAccess.add(ctx.getText());
 
         }
@@ -92,11 +91,11 @@ public class TCCVisitor extends Java8BaseVisitor<Void> {
         super.visitFieldAccess(ctx);
         if (this.isPublicMethod && this.currentMethodName != null) {
             Set<String> methodAccess
-              = this.methodAccess.get(this.currentMethodName);
+                    = this.methodAccess.get(this.currentMethodName);
 
             for (int i = 0; i < ctx.getChildCount(); i++) {
                 if (ctx.getChild(i) instanceof TerminalNodeImpl
-                  && !ctx.getChild(i).getText().equals(".")) {
+                        && !ctx.getChild(i).getText().equals(".")) {
                     classFields.add(ctx.getChild(i).getText());
                     methodAccess.add(ctx.getChild(i).getText());
                 }
@@ -104,7 +103,7 @@ public class TCCVisitor extends Java8BaseVisitor<Void> {
         }
         return null;
     }
-    
+
     public Set<String> getFields() {
         return classFields;
     }

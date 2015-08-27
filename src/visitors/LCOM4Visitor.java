@@ -12,7 +12,6 @@ import java.util.Set;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 import antlr.Java8BaseVisitor;
-import antlr.Java8Parser;
 import antlr.Java8Parser.ExpressionNameContext;
 import antlr.Java8Parser.FieldAccessContext;
 import antlr.Java8Parser.FieldDeclarationContext;
@@ -31,7 +30,6 @@ public class LCOM4Visitor extends Java8BaseVisitor<Void> {
     private Set<String> classFields;
     private String currentMethodName;
     private boolean isPublicMethod = false;
-
 
     public LCOM4Visitor() {
         this.classFields = new HashSet<>();
@@ -79,7 +77,7 @@ public class LCOM4Visitor extends Java8BaseVisitor<Void> {
         super.visitExpressionName(ctx);
         if (this.isPublicMethod && this.currentMethodName != null) {
             Set<String> methodAccess
-              = this.methodAccess.get(this.currentMethodName);
+                    = this.methodAccess.get(this.currentMethodName);
             methodAccess.add(ctx.getText());
 
         }
@@ -93,11 +91,11 @@ public class LCOM4Visitor extends Java8BaseVisitor<Void> {
         super.visitFieldAccess(ctx);
         if (this.isPublicMethod && this.currentMethodName != null) {
             Set<String> methodAccess
-              = this.methodAccess.get(this.currentMethodName);
+                    = this.methodAccess.get(this.currentMethodName);
 
             for (int i = 0; i < ctx.getChildCount(); i++) {
                 if (ctx.getChild(i) instanceof TerminalNodeImpl
-                  && !ctx.getChild(i).getText().equals(".")) {
+                        && !ctx.getChild(i).getText().equals(".")) {
                     classFields.add(ctx.getChild(i).getText());
                     methodAccess.add(ctx.getChild(i).getText());
                 }
@@ -105,7 +103,7 @@ public class LCOM4Visitor extends Java8BaseVisitor<Void> {
         }
         return null;
     }
-    
+
     public Set<String> getFields() {
         return classFields;
     }

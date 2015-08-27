@@ -42,13 +42,12 @@ public class LCOM4Calculator implements IMetric {
                 for (int j = i + 1; j < methodCount; j++) {
                     String firstMethodName = methods.get(i);
                     String secondMethodName = methods.get(j);
-                    
+
                     Set<String> accessesOfMethod = this.lcom4Visitor
                             .getMethodFieldAccess()
                             .get(firstMethodName);
-                    
+
                     accessesOfMethod.retainAll(this.lcom4Visitor.getFields());
-                    
 
                     Set<String> accessesOfSecondMethod = this.lcom4Visitor
                             .getMethodFieldAccess()
@@ -69,7 +68,7 @@ public class LCOM4Calculator implements IMetric {
                 }
             }
         }
-        return 1 + methods.size() - relatedMethods.size();
+        return methods.size() - relatedMethods.size() - 1;
     }
 
     @Override
@@ -85,13 +84,12 @@ public class LCOM4Calculator implements IMetric {
 
     @Override
     public String getMessage() {
-        System.out.println("threshold :" + this.threshold);
-        System.out.println("lcom4" + this.lcom4);
-        if (this.threshold == this.lcom4)
+        if (this.threshold == this.lcom4) {
             return "LCOM4 SEEMS OK";
-        else if(this.threshold < this.lcom4)
+        } else if (this.threshold < this.lcom4) {
             return "LCOM4 SEEMS HIGH";
-        else
+        } else {
             return "LCOM4 SEEMS OK";
+        }
     }
 }

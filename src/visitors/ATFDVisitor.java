@@ -26,7 +26,7 @@ public class ATFDVisitor extends Java8BaseVisitor<Void> {
         this.aftdCounter++;
         return null;
     }
-    
+
     @Override
     public Void visitMethodInvocation_lfno_primary(Java8Parser.MethodInvocation_lfno_primaryContext ctx) {
         super.visitMethodInvocation_lfno_primary(ctx);
@@ -37,6 +37,5 @@ public class ATFDVisitor extends Java8BaseVisitor<Void> {
     public double getAtfdCounter() {
         return this.aftdCounter;
     }
-    
-    
+
 }

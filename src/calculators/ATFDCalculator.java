@@ -17,11 +17,11 @@ public class ATFDCalculator implements IMetric {
 
     private static final String HIGH_ATFD = "ATFD SEEMS HIGH";
     private static final String OK_ATFD = "ATFD SEEMS OK";
-    
+
     private double result;
     private final ATFDVisitor atfdVisitor;
     private double threshold;
-    
+
     public ATFDCalculator(ParseTree tree) {
         this.threshold = 8;
         this.atfdVisitor = new ATFDVisitor();

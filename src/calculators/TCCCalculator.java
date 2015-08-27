@@ -86,7 +86,6 @@ public class TCCCalculator implements IMetric {
 
     @Override
     public String getMessage() {
-        System.out.println("Threshold is " + this.threshold);
         return this.tcc < this.threshold ? LOW_COHESION : OK_COHESION;
     }
 

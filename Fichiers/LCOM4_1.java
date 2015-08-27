@@ -1,23 +1,25 @@
-class TCC2sur10 {
+class LCOM4_1 {
     private int x, y;
     
     public void methodA() {
-        x = 5;
-        y = 5;
+        methodB();
     }
     
     public void methodB() {
         x = 7;
-        y = 5;
     }
     
     public void methodC() {
-        x = 7;
         y = 5;
+        x = 2;
     }
     
     public void methodD() {
-        x = 7;
         y = 7;
+        methodE();
+    }
+
+    public void methodE() {
+    	return;
     }
 }

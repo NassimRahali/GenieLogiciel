@@ -10,8 +10,10 @@ package calculators.interfaces;
  * @author nsm
  */
 public interface IMetric {
-    public double ComputeAndGet();
-    public void setThreshold(double t);
-    public String getMessage();
 
+    public double ComputeAndGet();
+
+    public void setThreshold(double t);
+
+    public String getMessage();
 }

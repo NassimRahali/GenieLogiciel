@@ -99,7 +99,6 @@ public class WMCVisitor extends Java8BaseVisitor<Void> {
 //        this.mapMethodComplexity.get(this.currentMethod).incrementAndGet();
 //        return null;
 //    }
-
     @Override
     public Void visitCatchClause(Java8Parser.CatchClauseContext ctx) {
         super.visitCatchClause(ctx);

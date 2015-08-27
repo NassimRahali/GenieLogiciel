@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 public class LCOM4CalculatorTest {
 
     org.antlr.v4.runtime.tree.ParseTree tree;
-    
+
     public LCOM4CalculatorTest() throws FileNotFoundException, IOException {
         ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("SuperTest.java"));
         Java8Lexer lexer = new Java8Lexer(input);

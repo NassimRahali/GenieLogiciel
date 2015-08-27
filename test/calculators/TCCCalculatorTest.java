@@ -11,7 +11,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.tree.ParseTree;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -26,7 +25,7 @@ import static org.junit.Assert.*;
 public class TCCCalculatorTest {
 
     org.antlr.v4.runtime.tree.ParseTree tree;
-        
+
     public TCCCalculatorTest() throws IOException {
         ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("SuperTest.java"));
         Java8Lexer lexer = new Java8Lexer(input);
@@ -34,19 +33,19 @@ public class TCCCalculatorTest {
         Java8Parser parser = new Java8Parser(tokens);
         tree = parser.compilationUnit();
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -83,5 +82,5 @@ public class TCCCalculatorTest {
         assertEquals(expResult, result);
         System.out.println("End testGetMessage");
     }
-    
+
 }

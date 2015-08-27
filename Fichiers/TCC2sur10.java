@@ -1,5 +1,5 @@
-class TCC4sur10 {
-    private int x, y, z;
+class TCC2sur10 {
+    private int x, y;
     
     public void methodA() {
         x = 5;
@@ -11,18 +11,13 @@ class TCC4sur10 {
     
     public void methodC() {
         y = 5;
-        x = 5; // Augmente la cohésion
     }
     
     public void methodD() {
         y = 7;
     }
-    
-    public void foo() {
-        z = 5;
-    }
-    
-    public void foo2() {
-        System.out.println("salut");
+
+    public void methodE() {
+    	return;
     }
 }

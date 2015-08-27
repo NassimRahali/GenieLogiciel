@@ -1,8 +1,6 @@
 package calculators;
 
 import calculators.interfaces.IMetric;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 import org.antlr.v4.runtime.tree.ParseTree;
 import visitors.WMCVisitor;
 
@@ -18,9 +16,9 @@ public class WMCCalculator implements IMetric {
     private boolean isMcCabe = false;
     private double result;
     private final WMCVisitor wmcVisitor;
-    
+
     public WMCCalculator(ParseTree pt, boolean mode) {
-        
+
         this.isMcCabe = mode;
         this.wmcVisitor = new WMCVisitor();
         this.wmcVisitor.visit(pt);
@@ -28,14 +26,12 @@ public class WMCCalculator implements IMetric {
 
     @Override
     public double ComputeAndGet() {
-        if(this.isMcCabe) {
-            this.wmcVisitor.getMapMethodComplexity().forEach((key, value) ->
-                {
-                    this.result += value.get();
-                }
+        if (this.isMcCabe) {
+            this.wmcVisitor.getMapMethodComplexity().forEach((key, value) -> {
+                this.result += value.get();
+            }
             );
-        }
-        else {
+        } else {
             this.result = this.wmcVisitor.getMapMethodComplexity().size();
         }
         return result;
@@ -43,10 +39,9 @@ public class WMCCalculator implements IMetric {
 
     @Override
     public String getMessage() {
-        System.out.println("Threshold is : " + this.threshold);
         return this.result >= this.threshold ? WMC_TOO_HIGH : WMC_OK;
-    }    
-    
+    }
+
     @Override
     public void setThreshold(double t) {
         this.threshold = t;
