@@ -81,7 +81,7 @@
     
     <path id="classpath.junittest">
         <path refid="classpath.base" />
-        <pathelement location="$(build.dir}/lib/junit_4/junit-4.10.jar" />
+        <pathelement location="$/opt/lib/java/junit-4.10.jar" />
         <pathelement location="${test.dir}" />
     </path>
     
