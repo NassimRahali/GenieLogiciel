@@ -12,14 +12,14 @@
     <import file="nbproject/build-impl.xml"/>
     
     <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
-        <classpath path="/home/nsm/Bureau/Cours/Génie Logiciel/GenieLogiciel/lib/jacocoant.jar"/>
+        <classpath path="./lib/jacocoant.jar" />
     </taskdef>
     
     <target name="test" depends="init">
         <jacoco:coverage destfile="target/jacoco.exec">
             <junit printsummary="yes" haltonfailure="yes" fork="yes" forkmode="once">
                 <classpath>
-                            <path path="${run.test.classpath}"/>
+                    <path path="${run.test.classpath}"/>
                 </classpath>
                 <formatter type="plain"/>
                 <formatter type="xml"/>
