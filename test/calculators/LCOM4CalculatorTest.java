@@ -23,7 +23,7 @@ public class LCOM4CalculatorTest {
     org.antlr.v4.runtime.tree.ParseTree tree;
 
     public LCOM4CalculatorTest() throws FileNotFoundException, IOException {
-        ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("SuperTest.java"));
+        ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("Fichiers/SuperTest.java"));
         Java8Lexer lexer = new Java8Lexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         Java8Parser parser = new Java8Parser(tokens);
@@ -50,7 +50,7 @@ public class LCOM4CalculatorTest {
     public void testComputeAndGet() {
         System.out.println("ComputeAndGet");
         LCOM4Calculator instance = new LCOM4Calculator(tree);
-        double expResult = 4.0;
+        double expResult = 2.0;
         double result = instance.ComputeAndGet();
         assertEquals(expResult, result, 0.0);
         System.out.println("End ComputeAndGet");

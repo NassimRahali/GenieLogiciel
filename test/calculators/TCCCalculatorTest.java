@@ -27,7 +27,7 @@ public class TCCCalculatorTest {
     org.antlr.v4.runtime.tree.ParseTree tree;
 
     public TCCCalculatorTest() throws IOException {
-        ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("SuperTest.java"));
+        ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("Fichiers/SuperTest.java"));
         Java8Lexer lexer = new Java8Lexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         Java8Parser parser = new Java8Parser(tokens);
