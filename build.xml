@@ -70,39 +70,4 @@
     nbproject/build-impl.xml file. 
 
     -->
-    
-    <property name="build.dir" value="./"/>
-    <property name="src.dir" location="${build.dir}/src"/>
-    <property name="test.dir" location="${build.dir}/test/calculators"/>
-    <property name="test.htmlreports.dir" location="${build.dir}/test/htmlreports"/>
-
-    <property name="test.data.dir" location="${build.dir}/test/data"/>
-    <property name="junit.class.name" value="calculators.AllTests"/>
-    
-    <path id="classpath.junittest">
-        <path refid="classpath.base" />
-        <pathelement location="$/opt/lib/java/junit-4.10.jar" />
-        <pathelement location="${test.dir}" />
-    </path>
-    
-    <target name="test" depends="compile-test">
-        <mkdir dir="${test.data.dir}"/>
-        <mkdir dir="${test.htmlreports.dir}"/>
-
-        <junit fork="no" haltonfailure="no" showoutput="yes" printsummary="true">
-            <test name="${junit.class.name}" todir="${test.data.dir}"/>
-            <formatter type="brief" usefile="false"/>
-            <formatter type="xml"/>
-            <classpath refid="classpath.base" />
-            <classpath refid="classpath.src" />
-            <classpath refid="classpath.junittest" />
-        </junit>
-        <junitreport todir="${test.htmlreports.dir}">
-            <fileset dir="${test.data.dir}">
-                <include name="TEST-*.xml"/>
-            </fileset>
-            <report format="frames" todir="${test.htmlreports.dir}"/>
-        </junitreport>
-    </target>
-    <target name="all" depends="compile-test" />
 </project>
