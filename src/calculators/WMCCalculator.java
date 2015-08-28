@@ -1,6 +1,5 @@
 package calculators;
 
-import calculators.interfaces.IMetric;
 import org.antlr.v4.runtime.tree.ParseTree;
 import visitors.WMCVisitor;
 
@@ -8,7 +7,7 @@ import visitors.WMCVisitor;
  *
  * @author nsm
  */
-public class WMCCalculator implements IMetric {
+public class WMCCalculator extends MetricCalculator {
 
     private static final String WMC_TOO_HIGH = "WMC SEEMS TOO HIGH";
     private static final String WMC_OK = "WMC SEEMS OK";
@@ -27,10 +26,8 @@ public class WMCCalculator implements IMetric {
     @Override
     public double ComputeAndGet() {
         if (this.isMcCabe) {
-            this.wmcVisitor.getMapMethodComplexity().forEach((key, value) -> {
-                this.result += value.get();
-            }
-            );
+            this.wmcVisitor.getMapMethodComplexity().
+                    forEach((key, value) -> {this.result += value.get();});
         } else {
             this.result = this.wmcVisitor.getMapMethodComplexity().size();
         }
@@ -40,10 +37,5 @@ public class WMCCalculator implements IMetric {
     @Override
     public String getMessage() {
         return this.result >= this.threshold ? WMC_TOO_HIGH : WMC_OK;
-    }
-
-    @Override
-    public void setThreshold(double t) {
-        this.threshold = t;
     }
 }

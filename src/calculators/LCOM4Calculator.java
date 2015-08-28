@@ -1,6 +1,5 @@
 package calculators;
 
-import calculators.interfaces.IMetric;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -12,23 +11,15 @@ import visitors.LCOM4Visitor;
  *
  * @author nsm
  */
-public class LCOM4Calculator implements IMetric {
+public class LCOM4Calculator extends MetricCalculator {
 
     private double lcom4 = 0.0;
-    private double threshold;
     private LCOM4Visitor lcom4Visitor;
 
     public LCOM4Calculator(ParseTree pt) {
         this.threshold = 1;
         this.lcom4Visitor = new LCOM4Visitor();
         this.lcom4Visitor.visit(pt);
-    }
-
-    private double calculateTotalMethodPairs() {
-        int methodCount = this.lcom4Visitor.getMethodFieldAccess().size();
-        int n = methodCount - 1;
-        double totalMethodPairs = n * (n + 1) / 2.0;
-        return totalMethodPairs;
     }
 
     private int determineLCOM4() {
@@ -75,11 +66,6 @@ public class LCOM4Calculator implements IMetric {
     public double ComputeAndGet() {
         this.lcom4 = determineLCOM4();
         return this.lcom4;
-    }
-
-    @Override
-    public void setThreshold(double t) {
-        this.threshold = t;
     }
 
     @Override

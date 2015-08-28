@@ -10,7 +10,7 @@
 <project name="GodClassFinder" default="default" basedir="." xmlns:jacoco="antlib:org.jacoco.ant">
     <description>Builds, tests, and runs the project GodClassFinder.</description>
     <import file="nbproject/build-impl.xml"/>
-    
+<!--    
     <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
         <classpath path="./lib/jacocoant.jar" />
     </taskdef>
@@ -30,4 +30,5 @@
             </junit>
         </jacoco:coverage>
     </target>
+    -->
 </project>

@@ -27,7 +27,7 @@ public class TCCCalculatorTest {
     org.antlr.v4.runtime.tree.ParseTree tree;
 
     public TCCCalculatorTest() throws IOException {
-        ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("Fichiers/SuperTest.java"));
+        ANTLRInputStream input = new ANTLRInputStream(new FileInputStream("Fichiers/TCC2sur10.java"));
         Java8Lexer lexer = new Java8Lexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         Java8Parser parser = new Java8Parser(tokens);
@@ -54,7 +54,7 @@ public class TCCCalculatorTest {
     public void testComputeAndGet() {
         System.out.println("ComputeAndGet");
         TCCCalculator instance = new TCCCalculator(tree);
-        double expResult = 0.2222222222222222;
+        double expResult = 0.2;
         double result = instance.ComputeAndGet();
         assertEquals(expResult, result, 0.0);
         System.out.println("End ComputeAndGet");
@@ -64,6 +64,7 @@ public class TCCCalculatorTest {
     public void testGetMessage() {
         System.out.println("getMessage");
         TCCCalculator instance = new TCCCalculator(tree);
+        // NB : Treshold is at 1.0/3.0 by default
         String expResult = "COHESION SEEMS LOW";
         String result = instance.getMessage();
         assertEquals(expResult, result);
@@ -73,8 +74,10 @@ public class TCCCalculatorTest {
     @Test
     public void testSetThreshold() {
         System.out.println("setThreshold");
-        double t = 0.1;
+        double t = 0.1; 
         TCCCalculator instance = new TCCCalculator(tree);
+        // By default 1.0 / 3.0, putting it to 0.1 will make this test succeed 
+        // (0.2 > 0.1 = true so -> COHESION SEEMS OK if everything is working)
         instance.setThreshold(t);
         instance.ComputeAndGet();
         String expResult = "COHESION SEEMS OK";

@@ -6,21 +6,19 @@
 package calculators;
 
 import visitors.ATFDVisitor;
-import calculators.interfaces.IMetric;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 /**
  *
  * @author nsm
  */
-public class ATFDCalculator implements IMetric {
+public class ATFDCalculator extends MetricCalculator {
 
     private static final String HIGH_ATFD = "ATFD SEEMS HIGH";
     private static final String OK_ATFD = "ATFD SEEMS OK";
 
     private double result;
     private final ATFDVisitor atfdVisitor;
-    private double threshold;
 
     public ATFDCalculator(ParseTree tree) {
         this.threshold = 8;
@@ -32,11 +30,6 @@ public class ATFDCalculator implements IMetric {
     public double ComputeAndGet() {
         this.result = this.atfdVisitor.getAtfdCounter();
         return this.result;
-    }
-
-    @Override
-    public void setThreshold(double t) {
-        this.threshold = t;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package calculators;
 
-import calculators.interfaces.IMetric;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -12,13 +11,12 @@ import visitors.TCCVisitor;
  *
  * @author nsm
  */
-public class TCCCalculator implements IMetric {
+public class TCCCalculator extends MetricCalculator {
 
     private static final String LOW_COHESION = "COHESION SEEMS LOW";
     private static final String OK_COHESION = "COHESION SEEMS OK";
 
     private double tcc = 0.0;
-    private double threshold;
     private final TCCVisitor tccVisitor;
 
     public TCCCalculator(ParseTree pt) {
@@ -87,10 +85,5 @@ public class TCCCalculator implements IMetric {
     @Override
     public String getMessage() {
         return this.tcc < this.threshold ? LOW_COHESION : OK_COHESION;
-    }
-
-    @Override
-    public void setThreshold(double t) {
-        this.threshold = t;
     }
 }
