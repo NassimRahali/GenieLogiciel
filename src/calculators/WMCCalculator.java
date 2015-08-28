@@ -11,13 +11,12 @@ public class WMCCalculator extends MetricCalculator {
 
     private static final String WMC_TOO_HIGH = "WMC SEEMS TOO HIGH";
     private static final String WMC_OK = "WMC SEEMS OK";
-    private double threshold = 47;
     private boolean isMcCabe = false;
     private double result;
     private final WMCVisitor wmcVisitor;
 
     public WMCCalculator(ParseTree pt, boolean mode) {
-
+        this.threshold = 47.0;
         this.isMcCabe = mode;
         this.wmcVisitor = new WMCVisitor();
         this.wmcVisitor.visit(pt);
